@@ -6,16 +6,15 @@ import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import { Education } from "@/components/Education";
 import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 
-export default function Home() {
-  // File-based storage can't write on Vercel's serverless filesystem, so the
-  // submission form is hidden there until it's backed by a real database. The
-  // board itself still renders normally.
-  const guestbookEnabled = process.env.VERCEL !== "1";
+// Footer (copyright bar + the seed-art guestbook) is pulled off the page for
+// now, since the guestbook's storage isn't production-ready yet. Re-add
+// `<Footer guestbookEnabled={...} />` beneath <Contact /> to bring it back —
+// the component itself is untouched, just not rendered.
 
+export default function Home() {
   return (
     <>
       <ScrollProgress />
@@ -30,7 +29,6 @@ export default function Home() {
         <Education />
         <Contact />
       </main>
-      <Footer guestbookEnabled={guestbookEnabled} />
     </>
   );
 }
