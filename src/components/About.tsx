@@ -7,7 +7,7 @@ import { profile } from "@/lib/data";
 
 const facts = [
   { icon: MapPin, text: "Based in Chicago, IL, and happy to relocate" },
-  { icon: GraduationCap, text: "M.S. Computer Science, Indiana University Bloomington, 2026" },
+  { icon: GraduationCap, text: "M.S. Computer Science, Indiana University Bloomington, May 2026" },
   { icon: Sparkles, text: "Building agents that reason, use tools, and make real-time calls" },
 ];
 

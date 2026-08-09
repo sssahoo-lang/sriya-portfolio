@@ -10,7 +10,7 @@ export function Projects() {
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-sage-600">
-            03 · Selected work
+            03 · Work
           </span>
         </Reveal>
         <Reveal delay={0.05}>

@@ -1,41 +1,49 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { motion, useInView, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 
 const PLAIN_NUMBER = /^(-?\d+(?:\.\d+)?)(%?)$/;
 
 function CountUpNumber({ value }: { value: string }) {
   const match = value.match(PLAIN_NUMBER);
   const ref = useRef<HTMLSpanElement>(null);
+  const displayRef = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
+  const reduceMotion = useReducedMotion();
+
   const target = match ? parseFloat(match[1]) : 0;
   const decimals = match && match[1].includes(".") ? match[1].split(".")[1].length : 0;
   const suffix = match ? match[2] : "";
 
+  // The spring starts at 0 so there's somewhere to count up from. That's just the
+  // animation's internal state, though. The markup below always renders the real
+  // final `value` as its default text, so anyone who never triggers this effect
+  // (no JS, prefers-reduced-motion, or the element never scrolling into view)
+  // still sees the correct number instead of a "0" stuck forever.
   const motionValue = useMotionValue(0);
   const spring = useSpring(motionValue, { duration: 1400, bounce: 0 });
 
   useEffect(() => {
-    if (inView) motionValue.set(target);
-  }, [inView, target, motionValue]);
-
-  const displayRef = useRef<HTMLSpanElement>(null);
+    if (!match || reduceMotion || !inView) return;
+    motionValue.set(target);
+  }, [inView, match, reduceMotion, target, motionValue]);
 
   useEffect(() => {
+    if (!match) return;
     const unsub = spring.on("change", (v) => {
       if (displayRef.current) {
         displayRef.current.textContent = v.toFixed(decimals) + suffix;
       }
     });
     return unsub;
-  }, [spring, decimals, suffix]);
+  }, [spring, decimals, suffix, match]);
 
   if (!match) return <span>{value}</span>;
 
   return (
     <span ref={ref}>
-      <span ref={displayRef}>0{suffix}</span>
+      <span ref={displayRef}>{value}</span>
     </span>
   );
 }

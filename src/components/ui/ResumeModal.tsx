@@ -7,7 +7,7 @@ import { profile } from "@/lib/data";
 
 /**
  * Shows the resume in a modal on top of the page instead of a new tab or
- * window.open() — Safari on macOS/iOS can silently block those, especially
+ * window.open(). Safari on macOS/iOS can silently block those, especially
  * if there's any delay between the click and the navigation.
  */
 export function ResumeModal({ open, onClose }: { open: boolean; onClose: () => void }) {

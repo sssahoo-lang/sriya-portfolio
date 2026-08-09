@@ -266,7 +266,10 @@ const visuals: Record<Project["slug"], React.ComponentType> = {
 export function ProjectVisual({ slug }: { slug: Project["slug"] }) {
   const Visual = visuals[slug];
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-sage-50">
+    <div
+      aria-hidden="true"
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-sage-50"
+    >
       <div className="absolute inset-0 p-2">
         <Visual />
       </div>

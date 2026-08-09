@@ -69,19 +69,24 @@ export function Hero() {
           initial="hidden"
           animate="show"
           transition={{ staggerChildren: 0.12, delayChildren: 0.1 }}
+          // A <br> reliably breaks the visual line and plain-text extraction
+          // (.innerText), but browsers don't consistently insert a space for it
+          // when computing the accessible name from child text, so screen readers
+          // can still announce the two sentences run together. The aria-label
+          // overrides that computed name with the exact, correctly-spaced string.
+          aria-label="Hi, I’m Sriya. I build AI agents that show their work."
           className="font-display text-balance text-center text-[9.5vw] leading-[1.06] tracking-tight text-charcoal sm:text-[2.75rem] md:text-[3.1rem] lg:text-[3.6rem] xl:text-[4rem]"
         >
           <motion.span
             variants={rise}
             transition={{ duration: 0.8, ease }}
-            className="block"
           >
-            Hi, I&rsquo;m Sriya Sahoo.
+            Hi, I&rsquo;m Sriya.
           </motion.span>
+          <br />
           <motion.span
             variants={rise}
             transition={{ duration: 0.8, ease }}
-            className="block"
           >
             I build AI agents that show their work.
           </motion.span>
@@ -108,7 +113,7 @@ export function Hero() {
             </motion.div>
 
             <motion.div variants={rise} transition={{ duration: 0.6, ease }}>
-              <PillLink href={`mailto:${profile.email}`}>Let&rsquo;s have a coffee</PillLink>
+              <PillLink href={`mailto:${profile.email}`}>Get in touch</PillLink>
             </motion.div>
 
             <motion.div
@@ -165,8 +170,9 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.75, ease }}
             className="order-2 mx-auto max-w-[17rem] text-center text-sm leading-relaxed text-charcoal-faint md:order-none md:mx-0 md:max-w-[15rem] md:self-start md:pt-6 md:text-left"
           >
-            Software engineer working on multi-step agents that reason, call tools, and log
-            every decision, plus the backend and UI that ship them.
+            Software engineer working on multi-step agents that reason, call tools, and
+            account for every decision, plus the backend and UI that put them in front of
+            real users.
           </motion.p>
         </div>
       </motion.div>

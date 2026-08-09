@@ -13,6 +13,12 @@ export function Education() {
             05 · Education & Credentials
           </span>
         </Reveal>
+        <Reveal delay={0.05}>
+          <h2 className="font-display mt-6 max-w-2xl text-balance text-3xl leading-tight md:text-4xl">
+            Two degrees, five certifications, and one paper that made it into a
+            conference.
+          </h2>
+        </Reveal>
 
         <div className="mt-12 grid gap-12 md:grid-cols-2">
           <div>
@@ -33,8 +39,13 @@ export function Education() {
               ))}
             </div>
 
+            <Reveal delay={0.25} direction="left">
+              <p className="mt-8 text-xs font-medium uppercase tracking-[0.15em] text-sage-600">
+                Publication
+              </p>
+            </Reveal>
             <Reveal delay={0.3} direction="left">
-              <div className="mt-8 flex items-start gap-3 rounded-2xl border border-line bg-cream-dim/50 p-5">
+              <div className="mt-3 flex items-start gap-3 rounded-2xl border border-line bg-cream-dim/50 p-5">
                 <BookOpen size={18} className="mt-0.5 shrink-0 text-sage-600" />
                 <div>
                   <p className="text-sm font-medium text-charcoal">{publication.title}</p>

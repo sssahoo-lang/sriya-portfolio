@@ -11,8 +11,8 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 
 // Footer (copyright bar + the seed-art guestbook) is pulled off the page for
 // now, since the guestbook's storage isn't production-ready yet. Re-add
-// `<Footer guestbookEnabled={...} />` beneath <Contact /> to bring it back —
-// the component itself is untouched, just not rendered.
+// `<Footer guestbookEnabled={...} />` beneath <Contact /> to bring it back.
+// The component itself is untouched, just not rendered.
 
 export default function Home() {
   return (
