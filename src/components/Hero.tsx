@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./ui/BrandIcons";
 import { DeskScene } from "./ui/DeskScene";
+import { ResumeModal } from "./ui/ResumeModal";
 import { profile } from "@/lib/data";
 
 const rise = {
@@ -18,14 +19,17 @@ function PillLink({
   href,
   children,
   external,
+  onClick,
 }: {
   href: string;
   children: React.ReactNode;
   external?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
   return (
     <motion.a
       href={href}
+      onClick={onClick}
       data-cursor-hover
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
       whileHover={{ y: -2 }}
@@ -38,6 +42,7 @@ function PillLink({
 }
 
 export function Hero() {
+  const [resumeOpen, setResumeOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -91,7 +96,15 @@ export function Hero() {
             className="order-3 flex flex-col items-center gap-3 md:order-none md:items-end"
           >
             <motion.div variants={rise} transition={{ duration: 0.6, ease }}>
-              <PillLink href={profile.resumeHref}>View my resume</PillLink>
+              <PillLink
+                href={profile.resumeHref}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setResumeOpen(true);
+                }}
+              >
+                View my resume
+              </PillLink>
             </motion.div>
 
             <motion.div variants={rise} transition={{ duration: 0.6, ease }}>
@@ -168,6 +181,8 @@ export function Hero() {
         Scroll
         <ArrowDown size={14} />
       </motion.a>
+
+      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </motion.section>
   );
 }
