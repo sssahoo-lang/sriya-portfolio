@@ -64,12 +64,12 @@ export function Hero() {
         <div className="absolute left-1/2 top-1/2 h-[320px] w-[420px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-terracotta-soft/20 blur-[90px]" />
       </div>
 
-      <motion.div style={{ y: lift }} className="mx-auto w-full max-w-5xl">
+      <motion.div style={{ y: lift }} className="mx-auto w-full max-w-6xl">
         <motion.h1
           initial="hidden"
           animate="show"
           transition={{ staggerChildren: 0.12, delayChildren: 0.1 }}
-          className="font-display text-center text-[10vw] leading-[1.06] tracking-tight text-charcoal sm:text-5xl md:text-6xl lg:text-[4.2rem]"
+          className="font-display text-balance text-center text-[9.5vw] leading-[1.06] tracking-tight text-charcoal sm:text-[2.75rem] md:text-[3.1rem] lg:text-[3.6rem] xl:text-[4rem]"
         >
           <motion.span
             variants={rise}
@@ -83,7 +83,7 @@ export function Hero() {
             transition={{ duration: 0.8, ease }}
             className="block"
           >
-            I&rsquo;m a software engineer building AI agents.
+            I build AI agents that show their work.
           </motion.span>
         </motion.h1>
 
@@ -165,8 +165,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.75, ease }}
             className="order-2 mx-auto max-w-[17rem] text-center text-sm leading-relaxed text-charcoal-faint md:order-none md:mx-0 md:max-w-[15rem] md:self-start md:pt-6 md:text-left"
           >
-            Multi-step agents that reason, call tools, and decide for themselves, plus the
-            backend and frontend that put them in front of people.
+            Software engineer working on multi-step agents that reason, call tools, and log
+            every decision, plus the backend and UI that ship them.
           </motion.p>
         </div>
       </motion.div>
