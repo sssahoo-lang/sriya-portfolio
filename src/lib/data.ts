@@ -11,7 +11,7 @@ export const profile = {
   tagline:
     "I build AI that does the task, not just talks about it. And the apps around it, so someone can actually use it.",
   blurb:
-    "I finished my M.S. in Computer Science at Indiana University Bloomington in May 2026. Most of my time goes into AI agents — the kind that work through a question rather than just answering it: calling tools, checking real data, deciding what’s next, and keeping a record of why. I build both halves, the reasoning and the product around it.",
+    "I finished my M.S. in Computer Science at Indiana University Bloomington in May 2026. Most of my time goes into AI agents: the kind that work through a question rather than just answering it, calling tools, checking real data, deciding what’s next, and keeping a record of why. I build both halves, the reasoning and the product around it.",
 };
 
 export type Experience = {
@@ -41,7 +41,7 @@ export const experience: Experience[] = [
     points: [
       "Dining halls were over-ordering because nobody had a clear read on demand. I built automated inventory and demand-trend pipelines across 5+ locations, and overstock dropped.",
       "Every team tracked things differently, so the numbers never lined up. I rebuilt the ETL pipeline and set validation and logging standards across 3+ workflows.",
-      "The people reading these reports weren't technical, so I designed the SQL for clarity over cleverness. Nobody needed training, which is why they actually got used.",
+      "The people reading these reports weren’t technical, so I designed the SQL for clarity over cleverness. Nobody needed training, which is why they actually got used.",
     ],
   },
   // TODO: Jul 2023 – Jul 2024 overlaps roughly 11 months with the B.Tech (Aug 2020
@@ -54,8 +54,8 @@ export const experience: Experience[] = [
     location: "Hyderabad, India",
     period: "Jul 2023 – Jul 2024",
     points: [
-      "I owned 20+ modules of a CRM a client team used daily — database schema up through the REST APIs running their lead and sales workflows.",
-      "Automated what used to be manual inside it: rule-based processing, multi-step approvals, notifications, validation — so the same steps ran the same way every time.",
+      "I owned 20+ modules of a CRM a client team used daily, from the database schema up through the REST APIs running their lead and sales workflows.",
+      "Automated what used to be manual inside it: rule-based processing, multi-step approvals, notifications, validation. The same steps ran the same way every time.",
       "Built role-based, stage-aware access control that held consistently across frontend and backend, not just in one place.",
     ],
   },
@@ -92,7 +92,7 @@ export const projects: Project[] = [
     period: "Aug 2026",
     tagline: "Turns any article or PDF into a study guide you can actually trust",
     narrative:
-      "Hand it a web page, a PDF, or your own notes and it returns a study module with a quiz, where every fact links back to where it came from — so you’re never studying something the model made up. Hybrid retrieval underneath: semantic and keyword search, fused, then reranked.",
+      "Hand it a web page, a PDF, or your own notes and it returns a study module with a quiz, where every fact links back to where it came from, so you’re never studying something the model made up. Hybrid retrieval underneath: semantic and keyword search, fused, then reranked.",
     tags: ["Python", "FastAPI", "PostgreSQL", "pgvector", "Next.js"],
     metrics: [
       { value: "95.3%", label: "of claims traced to the source" },
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     period: "May 2026",
     tagline: "An AI that haggles your bills down so you don’t have to",
     narrative:
-      "The bill-negotiation call you keep putting off, made by an agent instead. It looks up what competitors actually charge, works out an angle, and emails the provider. When they reply it decides on its own whether to accept, counter, or hand off to you — logging why, every time.",
+      "The bill-negotiation call you keep putting off, made by an agent instead. It looks up what competitors actually charge, works out an angle, and emails the provider. When they reply it decides on its own whether to accept, counter, or hand off to you, logging why every time.",
     tags: ["Python", "LLM APIs", "Tool Use", "Gmail API", "FastAPI + React/Vite"],
     metrics: [
       { value: "0", label: "times I had to step in" },
@@ -123,7 +123,7 @@ export const projects: Project[] = [
     period: "Sep 2025",
     tagline: "A traffic camera that clocks your speed without touching the cloud",
     narrative:
-      "A Raspberry Pi watches a road, spots vehicles, and works out how fast they’re going — entirely on the board, with nothing sent to a server. YOLOv8 detects, tracking across frames estimates speed, and anything over the limit gets logged and flagged.",
+      "A Raspberry Pi watches a road, spots vehicles, and works out how fast they’re going. All of it runs on the board, with nothing sent to a server. YOLOv8 detects, tracking across frames estimates speed, and anything over the limit gets logged and flagged.",
     tags: ["Python", "YOLOv8", "Raspberry Pi", "OpenCV"],
     metrics: [
       { value: "40%", label: "faster inference on-device" },

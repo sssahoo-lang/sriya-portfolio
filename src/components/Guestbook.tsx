@@ -139,7 +139,7 @@ export function Guestbook({ enabled = true }: { enabled?: boolean }) {
                 onChange={(e) => setMessage(e.target.value)}
                 maxLength={300}
                 rows={2}
-                placeholder="Say hi, leave a thought, whatever's on your mind…"
+                placeholder="Say hi, leave a thought, whatever’s on your mind…"
                 className="resize-none rounded-xl border border-line bg-cream px-3.5 py-2.5 text-sm text-charcoal outline-none transition-colors placeholder:text-charcoal-faint focus:border-sage-400"
               />
 

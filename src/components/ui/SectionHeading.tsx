@@ -60,7 +60,7 @@ export function SectionHeading({
       <Reveal delay={0.05}>
         <h2
           className={
-            "font-display mt-9 text-balance text-[2.5rem] font-light leading-[1.03] tracking-tight md:text-[4rem] " +
+            "font-display mt-9 text-balance text-[2rem] font-light leading-[1.08] tracking-tight md:text-[3rem] " +
             (centered ? "mx-auto text-center " : "") +
             (ink ? "text-cream" : "text-charcoal")
           }

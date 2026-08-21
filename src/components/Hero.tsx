@@ -88,7 +88,7 @@ export function Hero() {
             transition={{ duration: 0.6, ease }}
             className="font-instrument text-[11px] uppercase tracking-[0.18em] text-charcoal-faint"
           >
-            {profile.location} — open to SWE &amp; AI engineering roles
+            {profile.location} &middot; open to SWE &amp; AI engineering roles
           </motion.p>
 
           <h1
@@ -105,7 +105,7 @@ export function Hero() {
             <motion.span
               variants={rise}
               transition={{ duration: 0.8, ease }}
-              className="font-display mt-2 block text-balance text-[10vw] font-light leading-[1.02] tracking-[-0.025em] text-charcoal sm:text-[3rem] md:text-[3.5rem] lg:text-[4.1rem] xl:text-[4.6rem]"
+              className="font-display mt-2 block text-balance text-[9vw] font-light leading-[1.04] tracking-[-0.025em] text-charcoal sm:text-[2.6rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[3.9rem]"
             >
               I build AI agents, and{" "}
               <span className="italic">the products around them.</span>
@@ -117,8 +117,8 @@ export function Hero() {
             transition={{ duration: 0.7, ease }}
             className="mt-7 max-w-md text-[17px] leading-relaxed text-charcoal-soft"
           >
-            Multi-step agents that reason, call tools, and account for every decision —
-            grounded in real data, and measured rather than assumed.
+            Multi-step agents that reason, call tools, and account for every decision,
+            grounded in real data and measured rather than assumed.
           </motion.p>
 
           <motion.div

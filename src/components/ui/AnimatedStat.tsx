@@ -73,8 +73,8 @@ export function AnimatedStat({
         className={
           "font-display tabular-nums leading-[0.95] tracking-tight " +
           (ink
-            ? "text-[2.75rem] text-cream md:text-[3.25rem]"
-            : "text-4xl text-sage-600 md:text-5xl")
+            ? "text-[1.9rem] text-cream md:text-[2.15rem]"
+            : "text-[1.9rem] text-sage-600 md:text-[2.15rem]")
         }
       >
         <CountUpNumber value={value} />
