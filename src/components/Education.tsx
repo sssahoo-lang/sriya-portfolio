@@ -34,6 +34,11 @@ export function Education() {
                     <p className="mt-1 text-xs text-charcoal-faint">
                       {ed.detail} · {ed.period}
                     </p>
+                    {ed.coursework && (
+                      <p className="mt-2 text-xs leading-relaxed text-charcoal-faint/80">
+                        {ed.coursework}
+                      </p>
+                    )}
                   </div>
                 </Reveal>
               ))}
