@@ -4,6 +4,7 @@ import { GraduationCap, MapPin, Sparkles } from "lucide-react";
 import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 import { AnimatedStat } from "./ui/AnimatedStat";
+import { DeskScene } from "./ui/DeskScene";
 import { profile } from "@/lib/data";
 
 const facts = [
@@ -51,14 +52,18 @@ export function About() {
         </div>
 
         <Reveal direction="right" delay={0.1}>
-          <div className="rounded-3xl border border-line bg-cream-dim/60 p-8">
-            <div className="grid grid-cols-1 gap-8">
-              {stats.map((s) => (
-                <AnimatedStat key={s.label} value={s.value} label={s.label} />
-              ))}
-            </div>
+          <div className="flex items-center justify-center rounded-3xl border border-line bg-cream-dim/60 px-6 py-10">
+            <DeskScene />
           </div>
         </Reveal>
+      </div>
+
+      {/* Stats move out of the right column to make room for the scene, and read
+          better as a row anyway — three numbers side by side, not stacked. */}
+      <div className="mt-16 grid grid-cols-1 gap-10 border-t border-line pt-12 sm:grid-cols-3">
+        {stats.map((s) => (
+          <AnimatedStat key={s.label} value={s.value} label={s.label} />
+        ))}
       </div>
     </section>
   );

@@ -92,7 +92,7 @@ export function Hero() {
           </motion.p>
 
           <h1
-            aria-label="Hi, I’m Sriya. I build AI agents that show their work."
+            aria-label="Hi, I’m Sriya. I build AI agents, and the products around them."
             className="mt-7"
           >
             <motion.span
@@ -105,10 +105,10 @@ export function Hero() {
             <motion.span
               variants={rise}
               transition={{ duration: 0.8, ease }}
-              className="font-display mt-2 block text-balance text-[10vw] font-light leading-[1.02] tracking-[-0.025em] text-charcoal sm:text-[3rem] md:text-[3.4rem] lg:text-[4rem] xl:text-[4.5rem]"
+              className="font-display mt-2 block text-balance text-[10vw] font-light leading-[1.02] tracking-[-0.025em] text-charcoal sm:text-[3rem] md:text-[3.5rem] lg:text-[4.1rem] xl:text-[4.6rem]"
             >
-              I build AI agents that{" "}
-              <span className="italic">show their work.</span>
+              I build AI agents, and{" "}
+              <span className="italic">the products around them.</span>
             </motion.span>
           </h1>
 
@@ -118,7 +118,7 @@ export function Hero() {
             className="mt-7 max-w-md text-[17px] leading-relaxed text-charcoal-soft"
           >
             Multi-step agents that reason, call tools, and account for every decision —
-            plus the backend and interface that put them in front of real users.
+            grounded in real data, and measured rather than assumed.
           </motion.p>
 
           <motion.div
