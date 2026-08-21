@@ -38,7 +38,9 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           <h3 className="font-display mt-3 text-[2.5rem] leading-[0.98] tracking-tight text-cream md:text-[3.25rem]">
             {project.name}
           </h3>
-          <p className="mt-3 max-w-md text-[15px] leading-snug text-clay">{project.tagline}</p>
+          <p className="mt-3 max-w-md text-balance text-[15px] leading-snug text-clay">
+            {project.tagline}
+          </p>
 
           <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-ink-muted">
             {project.narrative}
