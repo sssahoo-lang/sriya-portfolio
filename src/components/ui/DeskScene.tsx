@@ -11,7 +11,7 @@ const SKIN_SHADE = "#dcb69c";
  * Everything is drawn from primitives so it inherits the site palette and stays
  * crisp at any size.
  */
-export function DeskScene() {
+export function DeskScene({ className }: { className?: string }) {
   const reduceMotion = useReducedMotion();
 
   const bob = reduceMotion
@@ -20,10 +20,13 @@ export function DeskScene() {
 
   return (
     <svg
-      viewBox="0 0 320 300"
+      // Cropped to the drawing itself. The old 0 0 320 300 box carried ~50px of
+      // dead space above the head and ~30 below the desk, which made the scene
+      // read small and floaty however wide its container was.
+      viewBox="16 40 294 238"
       role="img"
       aria-label="Illustration of someone working at a laptop with a mug of coffee"
-      className="h-auto w-full max-w-[340px]"
+      className={className ?? "h-auto w-full max-w-[340px]"}
     >
       {/* desk */}
       <line x1="26" y1="268" x2="300" y2="268" stroke="var(--color-line)" strokeWidth="2" strokeLinecap="round" />

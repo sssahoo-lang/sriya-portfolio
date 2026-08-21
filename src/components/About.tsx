@@ -52,8 +52,14 @@ export function About() {
         </div>
 
         <Reveal direction="right" delay={0.1}>
-          <div className="flex items-center justify-center rounded-3xl border border-line bg-cream-dim/60 px-6 py-10">
-            <DeskScene />
+          {/* No card: a bordered panel around a drawing reads as a placeholder
+              frame. A soft wash grounds it instead, with no hard edge. */}
+          <div className="relative flex items-center justify-center md:-mt-10 md:items-start">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sage-100/45 blur-[70px]"
+            />
+            <DeskScene className="relative h-auto w-full max-w-[420px]" />
           </div>
         </Reveal>
       </div>
