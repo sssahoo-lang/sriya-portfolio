@@ -100,6 +100,7 @@ export function DeskScene() {
         cy="215"
         r="7"
         fill="var(--color-sage-500)"
+        initial={{ opacity: 0.55 }}
         animate={reduceMotion ? {} : { opacity: [0.55, 1, 0.55] }}
         transition={reduceMotion ? {} : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
       />

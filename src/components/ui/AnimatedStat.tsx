@@ -52,11 +52,15 @@ export function AnimatedStat({
   value,
   label,
   className,
+  tone = "light",
 }: {
   value: string;
   label: string;
   className?: string;
+  /** "ink" for stats sitting on the dark work band. */
+  tone?: "light" | "ink";
 }) {
+  const ink = tone === "ink";
   return (
     <motion.div
       className={className}
@@ -65,10 +69,24 @@ export function AnimatedStat({
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="font-display text-3xl md:text-4xl text-sage-600 tabular-nums">
+      <div
+        className={
+          "font-display tabular-nums leading-[0.95] tracking-tight " +
+          (ink
+            ? "text-[2.75rem] text-cream md:text-[3.25rem]"
+            : "text-4xl text-sage-600 md:text-5xl")
+        }
+      >
         <CountUpNumber value={value} />
       </div>
-      <div className="mt-1 text-sm text-charcoal-soft">{label}</div>
+      <div
+        className={
+          "mt-2 text-[11px] leading-snug " +
+          (ink ? "text-ink-muted" : "text-charcoal-faint")
+        }
+      >
+        {label}
+      </div>
     </motion.div>
   );
 }

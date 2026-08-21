@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -15,6 +15,14 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+// Used only for trace/instrument labels inside the work diagrams and the small
+// section eyebrows — the "this is measured, not decorative" voice. Never body copy.
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
 export const metadata: Metadata = {
   title: "Sriya Smita Sahoo | AI Agent Engineer & Full-Stack Developer",
   description:
@@ -25,7 +33,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${inter.variable} ${plexMono.variable}`}
+    >
       <body className="min-h-full antialiased bg-cream text-charcoal">
         {children}
       </body>

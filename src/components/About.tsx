@@ -2,6 +2,7 @@
 
 import { GraduationCap, MapPin, Sparkles } from "lucide-react";
 import { Reveal } from "./ui/Reveal";
+import { SectionHeading } from "./ui/SectionHeading";
 import { AnimatedStat } from "./ui/AnimatedStat";
 import { profile } from "@/lib/data";
 
@@ -20,22 +21,17 @@ const stats = [
 export function About() {
   return (
     <section id="about" className="relative mx-auto max-w-6xl px-6 py-28 md:px-10 md:py-36">
-      <Reveal>
-        <span className="text-xs font-medium uppercase tracking-[0.2em] text-sage-600">
-          01 · About
+      <SectionHeading number="01" label="About">
+        <span className="block max-w-3xl">
+          I care more about whether a system makes the right call than whether it{" "}
+          <span className="italic">sounds smart</span> making it.
         </span>
-      </Reveal>
+      </SectionHeading>
 
-      <div className="mt-6 grid gap-16 md:grid-cols-[1.3fr_1fr]">
+      <div className="mt-16 grid gap-16 md:grid-cols-[1.3fr_1fr]">
         <div>
-          <Reveal delay={0.05}>
-            <h2 className="font-display text-balance text-3xl leading-tight text-charcoal md:text-4xl">
-              I care more about whether a system makes the right call
-              than whether it sounds smart making it.
-            </h2>
-          </Reveal>
           <Reveal delay={0.15}>
-            <p className="mt-6 max-w-xl text-charcoal-soft leading-relaxed">
+            <p className="max-w-xl text-[17px] leading-relaxed text-charcoal-soft">
               {profile.blurb}
             </p>
           </Reveal>

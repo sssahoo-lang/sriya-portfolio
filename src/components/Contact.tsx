@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Check, Copy } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./ui/BrandIcons";
 import { Reveal } from "./ui/Reveal";
+import { SectionHeading } from "./ui/SectionHeading";
 import { MagneticButton } from "./ui/MagneticButton";
 import { profile } from "@/lib/data";
 
@@ -22,26 +23,22 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden px-6 py-28 md:px-10 md:py-40">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-sage-100/60 blur-3xl" />
+    <section
+      id="contact"
+      className="ink-grain relative overflow-hidden bg-ink px-6 py-32 text-cream md:px-10 md:py-44"
+    >
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute left-1/2 top-1/3 h-96 w-96 -translate-x-1/2 rounded-full bg-clay/10 blur-[110px]" />
       </div>
 
-      <div className="mx-auto max-w-4xl text-center">
-        <Reveal>
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-sage-600">
-            06 · Contact
-          </span>
-        </Reveal>
-
-        <Reveal delay={0.05}>
-          <h2 className="font-display mt-6 text-balance text-4xl leading-tight md:text-6xl">
-            Building something worth <span className="italic text-sage-600">reasoning about?</span>
-          </h2>
-        </Reveal>
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
+        <SectionHeading number="06" label="Contact" tone="ink" align="center">
+          Building something worth{" "}
+          <span className="italic text-clay">reasoning about?</span>
+        </SectionHeading>
 
         <Reveal delay={0.15}>
-          <p className="mx-auto mt-6 max-w-lg text-charcoal-soft">
+          <p className="mx-auto mt-8 max-w-lg text-[17px] leading-relaxed text-ink-muted">
             I&rsquo;m open to full-time SWE and AI agent engineering roles. The fastest way
             to reach me is email, and I read every one.
           </p>
@@ -51,7 +48,7 @@ export function Contact() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <MagneticButton
               href={`mailto:${profile.email}`}
-              className="bg-sage-600 text-cream hover:bg-sage-700"
+              className="bg-clay text-ink hover:bg-terracotta-soft"
             >
               {profile.email}
             </MagneticButton>
@@ -59,7 +56,7 @@ export function Contact() {
             <button
               onClick={copyEmail}
               data-cursor-hover
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-charcoal/15 text-charcoal-soft transition-colors hover:border-sage-500 hover:text-sage-600"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-ink-line text-ink-muted transition-colors hover:border-clay hover:text-clay"
               aria-label="Copy email address"
             >
               <motion.span
@@ -81,17 +78,17 @@ export function Contact() {
               target="_blank"
               rel="noreferrer"
               data-cursor-hover
-              className="inline-flex items-center gap-2 text-sm text-charcoal-faint transition-colors hover:text-sage-600"
+              className="inline-flex items-center gap-2 text-sm text-ink-muted transition-colors hover:text-clay"
             >
               <GithubIcon size={16} /> GitHub
             </a>
-            <span className="text-line">·</span>
+            <span className="text-ink-line">·</span>
             <a
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
               data-cursor-hover
-              className="inline-flex items-center gap-2 text-sm text-charcoal-faint transition-colors hover:text-sage-600"
+              className="inline-flex items-center gap-2 text-sm text-ink-muted transition-colors hover:text-clay"
             >
               <LinkedinIcon size={16} /> LinkedIn
             </a>

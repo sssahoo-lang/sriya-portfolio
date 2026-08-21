@@ -2,60 +2,71 @@
 
 import { motion } from "framer-motion";
 import { Reveal } from "./ui/Reveal";
+import { SectionHeading } from "./ui/SectionHeading";
 import { experience } from "@/lib/data";
 
 export function Experience() {
   return (
-    <section id="experience" className="relative bg-cream-dim/50 px-6 py-28 md:px-10 md:py-36">
+    <section id="experience" className="relative bg-cream-dim/60 px-6 py-32 md:px-10 md:py-44">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-sage-600">
-            02 · Experience
+        <SectionHeading number="02" label="Experience">
+          <span className="block max-w-4xl">
+            Every role so far has had the same shape: something was manual and
+            confusing, so I <span className="italic">automated it</span> and made it
+            make sense.
           </span>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <h2 className="font-display mt-6 max-w-2xl text-balance text-3xl leading-tight md:text-4xl">
-            Every role so far has had the same shape: something was
-            manual and confusing, so I automated it and made it make sense.
-          </h2>
-        </Reveal>
+        </SectionHeading>
 
-        <div className="relative mt-16">
-          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-line md:left-[9px]" />
-
-          <ol className="space-y-12">
-            {experience.map((job, i) => (
-              <Reveal key={job.org} delay={i * 0.08} direction="left" amount={0.15}>
-                <li className="relative pl-8 md:pl-10">
-                  <motion.span
-                    className="absolute left-0 top-1.5 h-[15px] w-[15px] rounded-full border-2 border-sage-500 bg-cream md:h-[19px] md:w-[19px]"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 18, delay: i * 0.08 + 0.1 }}
-                  />
-
-                  <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
-                    <h3 className="font-display text-xl text-charcoal">
-                      {job.role} <span className="text-charcoal-faint">· {job.org}</span>
-                    </h3>
-                    <span className="text-sm text-charcoal-faint">{job.period}</span>
+        <ol className="mt-20 md:mt-24">
+          {experience.map((job) => (
+            <Reveal key={job.org} delay={0.04} amount={0.12}>
+              <li className="grid gap-6 border-t border-line py-10 md:grid-cols-[minmax(0,300px)_1fr] md:gap-14 md:py-14">
+                {/* Role identity — held in its own column so the bullets stop
+                    reading as one continuous wall of text down the page. */}
+                <div className="md:sticky md:top-28 md:self-start">
+                  <div className="flex items-center gap-3">
+                    <motion.span
+                      className="h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true, amount: 0.6 }}
+                      transition={{ type: "spring", stiffness: 320, damping: 18, delay: 0.1 }}
+                    />
+                    <span className="font-instrument text-[11px] uppercase tracking-[0.16em] text-charcoal-faint">
+                      {job.period}
+                    </span>
                   </div>
-                  <p className="mt-1 text-sm text-sage-600">{job.location}</p>
 
-                  <ul className="mt-4 space-y-2.5">
-                    {job.points.map((point) => (
-                      <li key={point} className="flex gap-3 text-sm leading-relaxed text-charcoal-soft md:text-[15px]">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-sage-400" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
+                  <h3 className="font-display mt-4 text-[1.75rem] leading-[1.1] tracking-tight text-charcoal md:text-[2rem]">
+                    {job.role}
+                  </h3>
+                  <p className="mt-2 text-[15px] text-sage-700">{job.org}</p>
+                  <p className="font-instrument mt-1 text-[11px] uppercase tracking-[0.12em] text-charcoal-faint">
+                    {job.location}
+                  </p>
+                </div>
+
+                <ul className="space-y-5 md:pt-1">
+                  {job.points.map((point, pi) => (
+                    <motion.li
+                      key={point}
+                      className="flex gap-4 text-[15px] leading-relaxed text-charcoal-soft"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.4 }}
+                      transition={{ delay: pi * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <span className="font-instrument mt-[3px] shrink-0 text-[11px] text-sage-400 tabular-nums">
+                        {String(pi + 1).padStart(2, "0")}
+                      </span>
+                      <span>{point}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
       </div>
     </section>
   );

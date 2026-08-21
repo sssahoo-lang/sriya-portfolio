@@ -2,25 +2,21 @@
 
 import { Award, BookOpen } from "lucide-react";
 import { Reveal } from "./ui/Reveal";
+import { SectionHeading } from "./ui/SectionHeading";
 import { certifications, education, publication } from "@/lib/data";
 
 export function Education() {
   return (
     <section className="relative px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-sage-600">
-            05 · Education & Credentials
-          </span>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <h2 className="font-display mt-6 max-w-2xl text-balance text-3xl leading-tight md:text-4xl">
+        <SectionHeading number="05" label="Education & credentials">
+          <span className="block max-w-3xl">
             Two degrees, five certifications, and one paper that made it into a
             conference.
-          </h2>
-        </Reveal>
+          </span>
+        </SectionHeading>
 
-        <div className="mt-12 grid gap-12 md:grid-cols-2">
+        <div className="mt-16 grid gap-12 md:grid-cols-2">
           <div>
             <Reveal delay={0.05}>
               <h3 className="font-display text-2xl text-charcoal">Education</h3>

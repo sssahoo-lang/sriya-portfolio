@@ -20,11 +20,14 @@ function PillLink({
   children,
   external,
   onClick,
+  primary,
 }: {
   href: string;
   children: React.ReactNode;
   external?: boolean;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  /** One filled action per screen — everything else stays quiet beside it. */
+  primary?: boolean;
 }) {
   return (
     <motion.a
@@ -34,7 +37,12 @@ function PillLink({
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
       whileHover={{ y: -2 }}
       transition={{ type: "spring", stiffness: 400, damping: 22 }}
-      className="inline-flex items-center justify-center rounded-full border border-line bg-cream px-5 py-2.5 text-sm text-charcoal-soft shadow-[0_1px_2px_rgba(43,43,41,0.04)] transition-colors hover:border-sage-400 hover:text-charcoal"
+      className={
+        "inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm transition-colors " +
+        (primary
+          ? "bg-charcoal text-cream shadow-[0_2px_10px_rgba(43,43,41,0.16)] hover:bg-ink"
+          : "border border-line bg-cream text-charcoal-soft shadow-[0_1px_2px_rgba(43,43,41,0.04)] hover:border-sage-400 hover:text-charcoal")
+      }
     >
       {children}
     </motion.a>
@@ -75,7 +83,7 @@ export function Hero() {
           // can still announce the two sentences run together. The aria-label
           // overrides that computed name with the exact, correctly-spaced string.
           aria-label="Hi, I’m Sriya. I build AI agents that show their work."
-          className="font-display text-balance text-center text-[9.5vw] leading-[1.06] tracking-tight text-charcoal sm:text-[2.75rem] md:text-[3.1rem] lg:text-[3.6rem] xl:text-[4rem]"
+          className="font-display mx-auto max-w-5xl text-balance text-center text-[10.5vw] font-light leading-[1] tracking-[-0.025em] text-charcoal sm:text-[3.2rem] md:text-[3.9rem] lg:text-[4.5rem] xl:text-[5rem]"
         >
           <motion.span
             variants={rise}
@@ -88,7 +96,8 @@ export function Hero() {
             variants={rise}
             transition={{ duration: 0.8, ease }}
           >
-            I build AI agents that show their work.
+            I build AI agents that{" "}
+            <span className="italic">show their work.</span>
           </motion.span>
         </motion.h1>
 
@@ -102,6 +111,7 @@ export function Hero() {
           >
             <motion.div variants={rise} transition={{ duration: 0.6, ease }}>
               <PillLink
+                primary
                 href={profile.resumeHref}
                 onClick={(e) => {
                   e.preventDefault();

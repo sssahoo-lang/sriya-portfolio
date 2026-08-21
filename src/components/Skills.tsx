@@ -8,6 +8,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { Reveal } from "./ui/Reveal";
+import { SectionHeading } from "./ui/SectionHeading";
 import { skillGroups } from "@/lib/data";
 import { projectsForSkill } from "@/lib/skillLinks";
 
@@ -40,18 +41,14 @@ export function Skills() {
       />
 
       <div className="relative mx-auto max-w-6xl">
-        <Reveal>
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-sage-600">
-            04 · Toolkit
+        <SectionHeading number="04" label="Toolkit">
+          <span className="block max-w-3xl">
+            What I reach for, from schema design to{" "}
+            <span className="italic">shipping the agent.</span>
           </span>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <h2 className="font-display mt-6 max-w-2xl text-balance text-3xl leading-tight md:text-4xl">
-            What I reach for, from schema design to shipping the agent.
-          </h2>
-        </Reveal>
+        </SectionHeading>
         <Reveal delay={0.1}>
-          <p className="mt-4 max-w-xl text-sm text-charcoal-faint">
+          <p className="mt-6 max-w-xl text-sm text-charcoal-faint">
             Filter by category, or hover a skill to see which project used it.
           </p>
         </Reveal>
