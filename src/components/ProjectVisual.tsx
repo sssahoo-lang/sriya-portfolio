@@ -549,9 +549,138 @@ function DeltaVisual({ still }: { still: boolean }) {
   );
 }
 
+/* DealFlow — the boundary is the project. The two services never call each
+   other: the CRM appends to a durable log inside the same transaction as the
+   write, and the Java side catches up from that log on its own clock. The
+   crossed path is as much the point as the one that works. */
+function DealFlowVisual({ still }: { still: boolean }) {
+  const entries = [0, 1, 2, 3];
+
+  return (
+    <Frame>
+      <Label x={22} y={26}>
+        TRANSACTIONAL OUTBOX
+      </Label>
+
+      {/* the two services */}
+      {[
+        { x: 20, label: "CRM", sub: "python" },
+        { x: 272, label: "ANALYTICS", sub: "java" },
+      ].map((svc) => (
+        <g key={svc.label}>
+          <rect
+            x={svc.x}
+            y={48}
+            width={108}
+            height={42}
+            rx={5}
+            fill="none"
+            stroke={line}
+            strokeWidth={1.3}
+          />
+          <Label x={svc.x + 54} y={66} anchor="middle" size={9} fill={cream}>
+            {svc.label}
+          </Label>
+          <Label x={svc.x + 54} y={80} anchor="middle" size={7.5}>
+            {svc.sub}
+          </Label>
+        </g>
+      ))}
+
+      {/* the call that never happens */}
+      <line
+        x1={132}
+        y1={69}
+        x2={268}
+        y2={69}
+        stroke={line}
+        strokeWidth={1.2}
+        strokeDasharray="4 5"
+      />
+      <g transform="translate(200 69)">
+        <circle r={9} fill="var(--color-ink-raised)" />
+        <path d="M -4 -4 L 4 4 M 4 -4 L -4 4" stroke={clay} strokeWidth={1.4} strokeLinecap="round" />
+      </g>
+      <Label x={200} y={92} anchor="middle" size={7.5} fill={clay}>
+        NO DIRECT CALL
+      </Label>
+
+      {/* CRM down into the log, analytics up out of it */}
+      <path d="M 74 90 L 74 150 L 146 150" fill="none" stroke={line} strokeWidth={1.3} />
+      <path d="M 254 150 L 326 150 L 326 90" fill="none" stroke={line} strokeWidth={1.3} />
+      <Label x={30} y={140} size={7.5}>
+        SAME TXN
+      </Label>
+      <Label x={378} y={140} anchor="end" size={7.5}>
+        READS ON ITS OWN CLOCK
+      </Label>
+
+      {/* the log */}
+      <rect
+        x={146}
+        y={118}
+        width={108}
+        height={130}
+        rx={5}
+        fill="none"
+        stroke={cream}
+        strokeWidth={1.3}
+      />
+      <Label x={200} y={136} anchor="middle" size={8} fill={cream}>
+        APPEND-ONLY
+      </Label>
+
+      {entries.map((i) => (
+        <motion.rect
+          key={i}
+          x={160}
+          y={150 + i * 22}
+          width={80}
+          height={12}
+          rx={2}
+          fill={i === entries.length - 1 ? clay : line}
+          initial={{ opacity: 0, scaleX: 0.4 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.25 + i * 0.13, duration: 0.45, ease }}
+          style={{ transformOrigin: "160px 0px" }}
+        />
+      ))}
+      <Label x={200} y={264} anchor="middle" size={7.5}>
+        REPLAYS IDENTICALLY
+      </Label>
+
+      {/* one event: written on the left, picked up on the right a beat later */}
+      {!still && (
+        <>
+          <motion.circle
+            r={3.5}
+            fill={clay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1, 1, 0] }}
+            transition={{ duration: 4, repeat: Infinity, times: [0, 0.06, 0.24, 0.3] }}
+          >
+            <animateMotion dur="4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.3;1" calcMode="linear" path="M 74 90 L 74 150 L 146 150" />
+          </motion.circle>
+          <motion.circle
+            r={3.5}
+            fill={verdigris}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0, 1, 1, 0] }}
+            transition={{ duration: 4, repeat: Infinity, times: [0, 0.5, 0.56, 0.78, 0.84] }}
+          >
+            <animateMotion dur="4s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.5;0.8;1" calcMode="linear" path="M 254 150 L 326 150 L 326 90" />
+          </motion.circle>
+        </>
+      )}
+    </Frame>
+  );
+}
+
 const visuals: Record<Project["slug"], React.ComponentType<{ still: boolean }>> = {
   notekit: NoteKitVisual,
   ratepilot: RatePilotVisual,
+  dealflow: DealFlowVisual,
   "edge-vision": EdgeVisionVisual,
   "graph-benchmark": GraphBenchmarkVisual,
   delta: DeltaVisual,

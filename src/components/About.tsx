@@ -14,7 +14,7 @@ const facts = [
 ];
 
 const stats = [
-  { value: "5", label: "projects shipped & documented" },
+  { value: "6", label: "projects shipped & documented" },
   { value: "5", label: "cloud & platform certifications" },
   { value: "4", label: "roles across data, backend & consulting" },
 ];

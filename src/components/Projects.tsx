@@ -13,7 +13,7 @@ export function Projects() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading number="03" label="Selected work" tone="ink">
           <span className="block max-w-4xl">
-            Five systems, five different questions about what{" "}
+            Six systems, six different questions about what{" "}
             <span className="italic">&ldquo;autonomous&rdquo;</span> should actually mean.
           </span>
         </SectionHeading>

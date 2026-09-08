@@ -74,7 +74,7 @@ export const experience: Experience[] = [
 export type Metric = { value: string; label: string };
 
 export type Project = {
-  slug: "notekit" | "ratepilot" | "edge-vision" | "graph-benchmark" | "delta";
+  slug: "notekit" | "ratepilot" | "dealflow" | "edge-vision" | "graph-benchmark" | "delta";
   name: string;
   period: string;
   status?: "In progress";
@@ -116,6 +116,21 @@ export const projects: Project[] = [
       { value: "100%", label: "of decisions logged with a reason" },
     ],
     href: "https://github.com/sssahoo-lang/ratepilot-agent",
+  },
+  {
+    slug: "dealflow",
+    name: "DealFlow Agents",
+    period: "Aug 2026",
+    tagline: "Two services, two languages, and a log that keeps them honest",
+    narrative:
+      "A sales CRM with LangGraph agents on one side and a Java analytics service on the other, with no direct calls between them. The CRM writes every change to an append-only log in the same transaction as the change itself; the Java service reads that log on its own schedule and rebuilds its own view. Wipe it and replay from scratch and you get an identical result.",
+    tags: ["Python", "FastAPI", "Java", "Spring Boot", "LangGraph", "PostgreSQL", "Docker"],
+    metrics: [
+      { value: "257", label: "tests, no API key needed" },
+      { value: "10k", label: "events replayed, identical result" },
+      { value: "2", label: "languages, one continuous trace" },
+    ],
+    href: "https://github.com/sssahoo-lang/dealflow-agents",
   },
   {
     slug: "edge-vision",
